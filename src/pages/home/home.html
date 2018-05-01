@@ -10,22 +10,18 @@
     Hello and welcome to SoonWhere, a project by Santiboa
   </p>
   <p>
-    <b>Soon</b> you will see a list of movies and <b>where</b> they are playing
+    What's playing <b>soon</b>, some<b>where</b> near me?
   </p>
   <a (click)="getGPS()">Click to see movies near me</a>
 
-  <div *ngIf="theatre">
-    Chosen theatre: {{theatre.name}}
-  </div>
   <ion-list>
-    <ion-item *ngFor="let item of movies" (click)="showMovie(item)">
+    <ion-item *ngFor="let item of showtimes" (click)="showMovie(item)">
       <ion-avatar item-start>
-        <img src="http://data.tmsapi.com/{{item.preferredImage.uri}}">
+        <img src="{{movies[item.movie_id].poster_image_thumbnail}}">
       </ion-avatar>
-      <h2>{{item.title}}</h2>
-      <h3>{{item.shortDescription}}</h3>
-      <p>{{item.showtimes[0].theatre.name}} at {{item.showtimes[0].dateTime}}</p>
+      <h2>{{movies[item.movie_id].title}}</h2>
+      <h3></h3>
+      <p>{{cinemas[item.cinema_id].name}}</p>
     </ion-item>
   </ion-list>
-  Length: {{this.movies.length}}
 </ion-content>

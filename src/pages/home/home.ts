@@ -28,7 +28,7 @@ export class HomePage {
   	this.getMovies(x)
   }
   getMovies(coords){
-  	let link = 'http://data.tmsapi.com/v1.1/movies/showings'
+  	let link = 'INT'
   	let params = {'api_key': 'dhq97fxeenhjbj58epy5zqqf', startDate: '2018-04-28', 'lat': coords.latitude+'', 'lng': coords.longitude+''}
   	console.log(params)
 

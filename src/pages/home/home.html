@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Home</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <h2>Welcome to SoonWhere!</h2>
+  <p>
+    Hello and welcome to SoonWhere, a project by Santiboa
+  </p>
+  <p>
+    <b>Soon</b> you will see a list of movies and <b>where</b> they are playing
+  </p>
+  <a (click)="getGPS()">Click to see movies near me</a>
+
+  <div *ngIf="theatre">
+    Chosen theatre: {{theatre.name}}
+  </div>
+  <ion-list>
+    <ion-item *ngFor="let item of movies" (click)="showMovie(item)">
+      <ion-avatar item-start>
+        <img src="http://data.tmsapi.com/{{item.preferredImage.uri}}">
+      </ion-avatar>
+      <h2>{{item.title}}</h2>
+      <h3>{{item.shortDescription}}</h3>
+      <p>{{item.showtimes[0].theatre.name}} at {{item.showtimes[0].dateTime}}</p>
+    </ion-item>
+  </ion-list>
+  Length: {{this.movies.length}}
+</ion-content>

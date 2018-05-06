@@ -15,13 +15,16 @@
   <a (click)="getGPS()">Click to see movies near me</a>
 
   <ion-list>
-    <ion-item *ngFor="let item of showtimes" (click)="showMovie(item)">
+    <ion-item *ngFor="let item of showtimes" (click)="showShowtime(item)" >
       <ion-avatar item-start>
-        <img src="{{movies[item.movie_id].poster_image_thumbnail}}">
+        <img src="{{movies[item.movie_id].poster_image_thumbnail}}" *ngIf="movies[item.movie_id] != null">
       </ion-avatar>
-      <h2>{{movies[item.movie_id].title}}</h2>
-      <h3></h3>
-      <p>{{cinemas[item.cinema_id].name}}</p>
+      <h2 *ngIf="movies[item.movie_id] != null">{{movies[item.movie_id].title}}</h2>
+      <h3 *ngIf="cinemas[item.movie_id] != null">{{cinemas[item.cinema_id].name}}</h3>
+      <!---<p>{{movies[item.movie_id].imdb.value}}</p>
+      <!---->
+      <p>Playing at {{item.time}} at <a href="https://www.google.com/maps/search/?api=1&query={{item.cinema.location.lat}},{{item.cinema.location.lon}}">{{item.cinema.name}}</a> ({{item.distance}} away)</p>
     </ion-item>
   </ion-list>
 </ion-content>
+''
